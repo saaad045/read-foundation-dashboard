@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>READ Foundation Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            overflow-x: hidden;
+            background-color: #a3b18a;
+        }
+
+        .header {
+            background-color: #fefae0;
+            padding: 10px 0;
+        }
+
+        .sidebar {
+            background-color: #344e41;
+            color: #000000;
+            padding: 10px;
+            min-height: 100vh;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .sidebar-item {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .sidebar-item.active {
+            background-color: #ddd;
+            font-weight: bold;
+        }
+
+        .main-content {
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .card {
+            background-color: #387445;
+            border: 1px solid #000000;
+            color: #fff;
+
+        }
+
+        .stat-card {
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .stat-number {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        .stat-label a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .view-detail {
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .view-detail:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            background-color: #fefae0;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        .portal-links li {
+            list-style: none;
+            margin-bottom: 10px;
+        }
+
+        .portal-links a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .portal-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar.d-none.d-md-block {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-6 d-flex align-items-center">
+                    <img src="./img/heaader-logo-1.png" alt="Logo" style="height: 70px; margin-right: 10px;" />
+                </div>
+                <div class="d-md-none col-6 text-end">
+                    <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
+                        <i class="fas fa-bars fa-lg"></i>
+                    </button>
+                </div>
+                <div class="d-none d-md-block col-md-6 text-end">
+                    <span style="margin-right: 10px;">Logout</span> |
+                    <span><a href="forgot-pw.html" style="text-decoration: none; color: #000000;">Change
+                            Password</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-2 sidebar d-none d-md-block">
+                <a href="index.html">
+                    <div class="sidebar-item active"><i class="fas fa-home me-2"></i> HOME</div>
+                </a>
+                <div class="sidebar-item" data-bs-toggle="collapse" data-bs-target="#LeaveSubmenu"
+                    aria-expanded="false" style="cursor: pointer;">
+                    <i class="fas fa-clipboard-list me-2"></i> LEAVE <i class="fas fa-chevron-down float-end"></i>
+                </div>
+                <div class="collapse ps-3" id="LeaveSubmenu">
+                    <a href="leave-app.html">
+                        <div class="sidebar-item">Leave Application</div>
+                    </a>
+                    <a href="#">
+                        <div class="sidebar-item">Pending Leaves</div>
+                    </a>
+                    <a href="#">
+                        <div class="sidebar-item">Off-Day / Field Visit</div>
+                    </a>
+                </div>
+                <a href="requisition.html">
+                <div class="sidebar-item" data-bs-toggle="collapse" data-bs-target="#requisitionSubmenu"
+                    aria-expanded="false" style="cursor: pointer;">
+                    <i class="fas fa-clipboard-list me-2"></i> REQUISITION <i class="fas fa-chevron-down float-end"></i>
+                </div></a>
+                <div class="collapse ps-3" id="requisitionSubmenu">
+                    <a href="requisition-form.html">
+                        <div class="sidebar-item">Create Requisition</div>
+                    </a>
+                    <a href="requisition-view.html">
+                        <div class="sidebar-item">Pending Requisitions</div>
+                    </a>
+                    <a href="requisition-view.html">
+                        <div class="sidebar-item">All Requisitions</div>
+                    </a>
+                    <a href="requisition-view.html">
+                        <div class="sidebar-item">Adjustment</div>
+                    </a>
+                </div>
+
+                <a href="budget.html">
+                    <div class="sidebar-item"><i class="fas fa-money-bill-wave me-2"></i> BUDGET</div>
+                </a>
+                <div class="sidebar-item"><i class="fas fa-bus me-2"></i> TMS</div>
+                <div class="sidebar-item"><i class="fas fa-users me-2"></i> MEETING</div>
+                <div class="sidebar-item"><i class="fas fa-laptop me-2"></i> IT (SR)</div>
+                <div class="sidebar-item"><i class="fas fa-building me-2"></i> DMM RMD</div>
+                <div class="sidebar-item"><i class="fas fa-home me-2"></i> DMM HD</div>
+                <div class="sidebar-item"><i class="fas fa-chart-line me-2"></i> M_IVA</div>
+                <div class="sidebar-item"><i class="fas fa-file-alt me-2"></i> REPORTS</div>
+                <div class="sidebar-item"><i class="fas fa-tachometer-alt me-2"></i> DASHBOARD</div>
+                <div class="sidebar-item"><i class="fas fa-cog me-2"></i> CONTROL PANEL</div>
+                <div class="sidebar-item"><i class="fas fa-project-diagram me-2"></i> PROJECT MANAGEMENT</div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-10 main-content">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Home</li>
+                    </ol>
+                </nav>
+                <!-- Quick Links -->
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="card stat-card">
+                            <div class="stat-number">LEAVES</div>
+                            <div class="stat-label"><a href="leave.html">View Details</a></div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stat-card">
+                            <div class="stat-number"> General REQUISITION</div>
+                            <div class="stat-label"><a href="requisition.html"> requests</a></div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stat-card">
+                            <div class="stat-number">Construction REQUISITION</div>
+                            <div class="stat-label">Construction requests</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stat-card">
+                            <div class="stat-number">Local Travel</div>
+                            <div class="stat-label">Travel</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Section -->
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="card stat-card">
+                            <div class="stat-number">0</div>
+                            <div class="stat-label">TMS</div>
+                            <a href="#" class="view-detail">View Detail <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stat-card">
+                            <div class="stat-number">0</div>
+                            <div class="stat-label">Regulation</div>
+                            <a href="#" class="view-detail">View Detail <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stat-card">
+                            <div class="stat-number">902</div>
+                            <div class="stat-label">Budget</div>
+                            <a href="budget.html" class="view-detail">View Detail <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stat-card">
+                            <div class="stat-number">TMS</div>
+                            <div class="stat-label">Transport Management</div>
+                            <a href="#" class="view-detail">View Detail <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Left Column -->
+                    <div class="col-md-8">
+                        <div class="card mb-4">
+                            <div class="card-header">Meeting</div>
+                            <div class="card-body">
+                                <p class="mb-0">No NEWS</p>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">Today's Attendance</div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table attendance-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Arrival</th>
+                                                <th>Departure</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Hassan Hayat</td>
+                                                <td>8:38:52</td>
+                                                <td>--:--:--</td>
+                                                <td>Present</td>
+                                            </tr>
+                                            <tr>
+                                                <td>SM3 Admin</td>
+                                                <td>--:--:--</td>
+                                                <td>--:--:--</td>
+                                                <td>Absent</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-header">Portal Links</div>
+                            <div class="card-body">
+                                <ul class="portal-links">
+                                    <li><a href="#"><i class="fas fa-link me-2"></i> IT (SR)</a></li>
+                                    <li><a href="#"><i class="fas fa-link me-2"></i> SMS</a></li>
+                                    <li><a href="#"><i class="fas fa-link me-2"></i> DMM FID</a></li>
+                                    <li><a href="#"><i class="fas fa-link me-2"></i> Inventory</a></li>
+                                    <li><a href="#"><i class="fas fa-link me-2"></i> Alumni & Volunteer</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">Leave Statistics</div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Leave Type</th>
+                                                <th>Count</th>
+                                                <th>Availed</th>
+                                                <th>Remaining</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Annual</td>
+                                                <td>10</td>
+                                                <td>10</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Casual</td>
+                                                <td>18</td>
+                                                <td>2.75</td>
+                                                <td>15.25</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Matrimonial</td>
+                                                <td>15</td>
+                                                <td>0</td>
+                                                <td>15</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Medical</td>
+                                                <td>15</td>
+                                                <td>5</td>
+                                                <td>10</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Paternal</td>
+                                                <td>5</td>
+                                                <td>0</td>
+                                                <td>5</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Unpaid</td>
+                                                <td>15</td>
+                                                <td>0</td>
+                                                <td>15</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Same as before -->
+
+    <div class="footer">2018 READ FOUNDATION. ALL RIGHTS RESERVED</div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Mobile Sidebar -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileSidebar">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="sidebar">
+                <a href="index.html">
+                    <div class="sidebar-item active"><i class="fas fa-home me-2"></i> HOME</div>
+                </a>
+                <a href="leave.html">
+                    <div class="sidebar-item"><i class="fas fa-calendar-alt me-2"></i> LEAVE</div>
+                </a>
+                <div class="sidebar-item"><i class="fas fa-clipboard-list me-2"></i> REQUISITION</div>
+                <div class="sidebar-item"><i class="fas fa-money-bill-wave me-2"></i> BUDGET</div>
+                <div class="sidebar-item"><i class="fas fa-bus me-2"></i> TMS</div>
+                <div class="sidebar-item"><i class="fas fa-users me-2"></i> MEETING</div>
+                <div class="sidebar-item"><i class="fas fa-laptop me-2"></i> IT (SR)</div>
+                <div class="sidebar-item"><i class="fas fa-building me-2"></i> DMM RMD</div>
+                <div class="sidebar-item"><i class="fas fa-home me-2"></i> DMM HD</div>
+                <div class="sidebar-item"><i class="fas fa-chart-line me-2"></i> M_IVA</div>
+                <div class="sidebar-item"><i class="fas fa-file-alt me-2"></i> REPORTS</div>
+                <div class="sidebar-item"><i class="fas fa-tachometer-alt me-2"></i> DASHBOARD</div>
+                <div class="sidebar-item"><i class="fas fa-cog me-2"></i> CONTROL PANEL</div>
+                <div class="sidebar-item"><i class="fas fa-project-diagram me-2"></i> PROJECT MANAGEMENT</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

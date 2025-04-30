@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>READ Foundation Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            overflow-x: hidden;
+            background-color: #a3b18a;
+        }
+
+        .header {
+            background-color: #fefae0;
+            padding: 10px 0;
+        }
+
+        .sidebar {
+            background-color: #344e41;
+            color: #000000;
+            padding: 10px;
+            min-height: 100vh;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .sidebar-item {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .sidebar-item.active {
+            background-color: #ddd;
+            font-weight: bold;
+        }
+
+        .main-content {
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .card {
+            background-color: #387445;
+            border: 1px solid #000000;
+            color: #fff;
+        }
+
+        .stat-card {
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .stat-number {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        .stat-label a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer {
+            background-color: #fefae0;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar.d-none.d-md-block {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-6 d-flex align-items-center">
+                    <img src="./img/heaader-logo-1.png" alt="Logo" style="height: 70px; margin-right: 10px;" />
+                </div>
+                <div class="d-md-none col-6 text-end">
+                    <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
+                        <i class="fas fa-bars fa-lg"></i>
+                    </button>
+                </div>
+                <div class="d-none d-md-block col-md-6 text-end">
+                    <span style="margin-right: 10px;">Logout</span> |
+                    <span><a href="forgot-pw.html" style="text-decoration: none; color: #000000;">Change
+                            Password</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-2 sidebar d-none d-md-block">
+                <a href="index.html">
+                    <div class="sidebar-item active"><i class="fas fa-home me-2"></i> HOME</div>
+                </a>
+                <div class="sidebar-item" data-bs-toggle="collapse" data-bs-target="#leaveSubmenu"
+                    aria-expanded="false">
+                    <i class="fas fa-clipboard-list me-2"></i> LEAVE <i class="fas fa-chevron-down float-end"></i>
+                </div>
+                <div class="collapse ps-3" id="leaveSubmenu">
+                    <a href="leave-app.html">
+                        <div class="sidebar-item">Leave Application</div>
+                    </a>
+                    <a href="#">
+                        <div class="sidebar-item">Pending Leaves</div>
+                    </a>
+                    <a href="#">
+                        <div class="sidebar-item">Off-Day / Field Visit</div>
+                    </a>
+                </div>
+                <div class="sidebar-item" data-bs-toggle="collapse" data-bs-target="#reqSubmenu" aria-expanded="false">
+                    <i class="fas fa-clipboard-list me-2"></i> REQUISITION <i class="fas fa-chevron-down float-end"></i>
+                </div>
+                <div class="collapse ps-3" id="reqSubmenu">
+                    <a href="requisition-form.html">
+                        <div class="sidebar-item">Create Requisition</div>
+                    </a>
+                    <a href="requisition-view.html">
+                        <div class="sidebar-item">Pending Requisitions</div>
+                    </a>
+                    <a href="requisition-view.html">
+                        <div class="sidebar-item">All Requisitions</div>
+                    </a>
+                    <a href="requisition-view.html">
+                        <div class="sidebar-item">Adjustment</div>
+                    </a>
+                </div>
+
+                <a href="budget.html">
+                    <div class="sidebar-item"><i class="fas fa-money-bill-wave me-2"></i> BUDGET</div>
+                </a>
+                <div class="sidebar-item"><i class="fas fa-bus me-2"></i> TMS</div>
+                <div class="sidebar-item"><i class="fas fa-users me-2"></i> MEETING</div>
+                <div class="sidebar-item"><i class="fas fa-laptop me-2"></i> IT (SR)</div>
+                <div class="sidebar-item"><i class="fas fa-building me-2"></i> DMM RMD</div>
+                <div class="sidebar-item"><i class="fas fa-home me-2"></i> DMM HD</div>
+                <div class="sidebar-item"><i class="fas fa-chart-line me-2"></i> M_IVA</div>
+                <div class="sidebar-item"><i class="fas fa-file-alt me-2"></i> REPORTS</div>
+                <div class="sidebar-item"><i class="fas fa-tachometer-alt me-2"></i> DASHBOARD</div>
+                <div class="sidebar-item"><i class="fas fa-cog me-2"></i> CONTROL PANEL</div>
+                <div class="sidebar-item"><i class="fas fa-project-diagram me-2"></i> PROJECT MANAGEMENT</div>
+            </div>
+            <div class="col-md-10 main-content">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Requisition</li>
+                    </ol>
+                </nav>
+                <ul class="nav nav-tabs" id="requisitionTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="req-mgmt-tab" data-bs-toggle="tab"
+                            data-bs-target="#req-mgmt" type="button" role="tab">Requisition Management</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="req-app-tab" data-bs-toggle="tab" data-bs-target="#req-app"
+                            type="button" role="tab">Requisition Approval (Active CEO)</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="req-app-it-tab" data-bs-toggle="tab" data-bs-target="#req-app-it"
+                            type="button" role="tab">Requisition Approval IT</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="loan-tab" data-bs-toggle="tab" data-bs-target="#loan" type="button"
+                            role="tab">Loan</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="req-mgmt" role="tabpanel">
+                        <div class="row mt-3 g-3">
+                            <!-- Cards -->
+                            <div class="col-md-3">
+                              <div class="card p-3 text-center" onclick="showForm('form-all')">
+                                <div class="card-title">All</div>
+                              </div>
+                            </div>
+                            <div class="col-md-3">
+                              <div class="card p-3 text-center" onclick="showForm('form-new')">
+                                <div class="card-title">New</div>
+                              </div>
+                            </div>
+                            <div class="col-md-3">
+                              <div class="card p-3 text-center" onclick="showForm('form-adjustment')">
+                                <div class="card-title">Adjustment</div>
+                              </div>
+                            </div>
+                            <div class="col-md-3">
+                              <div class="card p-3 text-center" onclick="showForm('form-pending')">
+                                <div class="card-title">Pending Approval</div>
+                              </div>
+                            </div>
+                            <div class="col-md-3">
+                              <div class="card p-3 text-center" onclick="showForm('form-inprocess')">
+                                <div class="card-title">In-Process</div>
+                              </div>
+                            </div>
+                            <div class="col-md-3">
+                              <div class="card p-3 text-center" onclick="showForm('form-localtravel')">
+                                <div class="card-title">Employee Local Travelling</div>
+                              </div>
+                            </div>
+                            <div class="col-md-3">
+                              <div class="card p-3 text-center" onclick="showForm('form-fieldbill')">
+                                <div class="card-title">Field Bill Submission</div>
+                              </div>
+                            </div>
+                            <div class="col-md-3">
+                              <div class="card p-3 text-center" onclick="showForm('form-itd10')">
+                                <div class="card-title">View ITD-10</div>
+                              </div>
+                            </div>
+                            <div class="col-md-3">
+                              <div class="card p-3 text-center" onclick="showForm('form-adjustmentnew')">
+                                <div class="card-title">Adjustment-New</div>
+                              </div>
+                            </div>
+                            <div class="col-md-3">
+                              <div class="card p-3 text-center" onclick="showForm('form-billsubmission')">
+                                <div class="card-title">Bill Submission</div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <!-- Forms (Hidden by default) -->
+                          <div class="row mt-4">
+                            <div class="col-md-12">
+                              <!-- Example Form Template: Clone and update IDs/placeholders for others -->
+                              <div class="card p-4 d-none" id="form-all">
+                                <h5>All Requisition</h5>
+                                <form>
+                                    <!-- First row with two divs -->
+                                    <div class="row g-3">
+                                        <div class="col-md-3">
+                                            <label for="requisitionNo" class="form-label">Requisition No</label>
+                                            <input type="number" class="form-control" id="requisitionNo"
+                                                placeholder="Enter number">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="Hod recommendation"
+                                            class="form-label">HOD Recommendation
+                                            </label>
+                                            <select class="form-select" id="Hod recommendation">
+                                                <option selected>--All--</option>
+                                                <option value="pending">Pending</option>
+                                                <option value="recommended">Recommended</option>
+                                                <option value="Not-recommended">Not-Recommended</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="f&a recommendation"
+                                            class="form-label">F&A Recommendation
+                                            </label>
+                                            <select class="form-select" id="f&a recommendation">
+                                                <option selected>--All--</option>
+                                                <option value="pending">Pending</option>
+                                                <option value="recommended">Recommended</option>
+                                                <option value="Not-recommended">Not-Recommended</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="ssd recommendation"
+                                            class="form-label">SSD Recommendation
+                                            </label>
+                                            <select class="form-select" id="ssd recommendation">
+                                                <option selected>--All--</option>
+                                                <option value="pending">Pending</option>
+                                                <option value="recommended">Recommended</option>
+                                                <option value="Not-recommended">Not-Recommended</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!---->
+                                    <div class="row g-3">
+                                        <div class="col-md-3">
+                                            <label for="ceo Approval"
+                                            class="form-label">Ceo Approval
+                                            </label>
+                                            <select class="form-select" id="ceo Approval">
+                                                <option selected>--All--</option>
+                                                <option value="pending">Pending</option>
+                                                <option value="recommended">Recommended</option>
+                                                <option value="rejected">Rejected</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="fromDate" class="form-label">From Date</label>
+                                            <input type="number" class="form-control" id="fromDate"
+                                                placeholder="Enter number">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="toDate" class="form-label">To Date</label>
+                                            <input type="number" class="form-control" id="toDate"
+                                                placeholder="Enter number">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="deptName"
+                                            class="form-label">Dept. Name
+                                            </label>
+                                            <select class="form-select" id="deptName">
+                                                <option selected>--All--</option>
+                                                <option value="IT">IT</option>
+                                                <option value="accounting&finance">Accounting & Finance</option>
+                                                <option value="schoolAdministration">School Administration</option>
+                                                <option value="acdemics">Academics</option>
+                                                <option value="executiveManagement">Executive MAnagement</option>
+                                            </select>
+                                        </div>
+                                        <button type="showApplication" class="btn btn-info">Show Application</button>
+                                    </div>
+
+                                    <!---->
+                                    <div class="row g-3">
+                                        <div class="col-md-3">
+                                            <label for="status"
+                                            class="form-label">Status
+                                            </label>
+                                            <select class="form-select" id="status">
+                                                <option selected>--All--</option>
+                                                <option value="continue">Continue</option>
+                                                <option value="completed">Completed</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="title" class="form-label">Title</label>
+                                            <input type="number" class="form-control" id="title"
+                                                placeholder="Enter number">
+                                        </div>
+                                        <button type class="btn btn-success">Export to Excel</button>
+                                        <table class="table application-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Application Type</th>
+                                                    <th>Amount</th>
+                                                    <th>Status</th>
+                                                    <th>HOD</th>
+                                                    <th>HR</th>
+                                                    <th>F&A</th>
+                                                    <th>CEO</th>
+                                                    <th>-</th>
+                                                    <th>-</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Hassan Hayat</td>
+                                                    <td>----</td>
+                                                    <td>--</td>
+                                                    <td>--</td>
+                                                    <td>--</td>
+                                                    <td>--</td>
+                                                    <td>--</td>
+                                                    <td>--</td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                  <button type="submit" class="btn btn-light">Submit</button>
+                                </form>
+                              </div>
+                          
+                              <!-- Copy this structure for each form, updating IDs -->
+                              <div class="card p-4 d-none" id="form-new">...form content...</div>
+                              <div class="card p-4 d-none" id="form-adjustment">...form content...</div>
+                              <div class="card p-4 d-none" id="form-pending">...form content...</div>
+                              <div class="card p-4 d-none" id="form-inprocess">...form content...</div>
+                              <div class="card p-4 d-none" id="form-localtravel">...form content...</div>
+                              <div class="card p-4 d-none" id="form-fieldbill">...form content...</div>
+                              <div class="card p-4 d-none" id="form-itd10">...form content...</div>
+                              <div class="card p-4 d-none" id="form-adjustmentnew">...form content...</div>
+                              <div class="card p-4 d-none" id="form-billsubmission">...form content...</div>
+                            </div>
+                          </div>
+                          
+                          <script>
+                            function showForm(id) {
+                              document.querySelectorAll('.card.p-4').forEach(form => {
+                                form.classList.add('d-none');
+                              });
+                              document.getElementById(id).classList.remove('d-none');
+                            }
+                          </script>
+                          
+                    </div>
+                    <div class="tab-pane fade" id="req-app" role="tabpanel">
+                        <div class="card mt-3 p-3">
+                            <h5>Pending Approval (Active-CEO)</h5>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="req-app-it" role="tabpanel">
+                        <div class="card mt-3 p-3">
+                            <h5>Pending Approval IT</h5>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="loan" role="tabpanel">
+                        <div class="row mt-3 g-3" id="loanCards">
+                            <div class="col-md-3">
+                                <div class="card p-3 text-center loan-card" data-form="form-application">
+                                    <div class="card-title">Application</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card p-3 text-center loan-card" data-form="form-myapp">
+                                    <div class="card-title">My Application</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card p-3 text-center loan-card" data-form="form-empapp">
+                                    <div class="card-title">Employees Application</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card p-3 text-center loan-card" data-form="form-ref">
+                                    <div class="card-title">References</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card p-3 text-center loan-card" data-form="form-payroll">
+                                    <div class="card-title">Payroll Advance</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card p-3 text-center loan-card" data-form="form-emergency">
+                                    <div class="card-title">Emergency Loan</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card p-3 text-center loan-card" data-form="form-quality">
+                                    <div class="card-title">Quality of Life</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card p-3 text-center loan-card" data-form="form-summary">
+                                    <div class="card-title">Quick Summary</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card p-3 text-center loan-card" data-form="form-eligibility">
+                                    <div class="card-title">Eligibilty Criteria</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Forms Container -->
+                        <div class="mt-4" id="loanForms">
+                            <!-- Application Form Example -->
+                            <div class="card p-4 d-none" id="form-application">
+                                <h5>Loan Application Form</h5>
+                                <form>
+                                    <!-- First row with two divs -->
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="applicantName" class="form-label">Name</label>
+                                            <input type="text" class="form-control" id="applicantName"
+                                                placeholder="Enter your name">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="employeeStatus" class="form-label">Employee Status</label>
+                                            <input type="text" class="form-control" id="employeeStatus"
+                                                placeholder="Enter employee status">
+                                        </div>
+                                    </div>
+
+                                    <!-- Second row with two divs -->
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="dateJoining" class="form-label">Date of Joining</label>
+                                            <input type="number" class="form-control" id="dateJoining"
+                                                placeholder="Enter date of joining">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="grossSalary" class="form-label">Gross Salary</label>
+                                            <input type="number" class="form-control" id="grossSalary"
+                                                placeholder="Enter loan amount">
+                                        </div>
+                                    </div>
+                                    <!-- third row with two divs-->
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="netSalary" class="form-label">Net Salary</label>
+                                            <input type="number" class="form-control" id="netSalary"
+                                                placeholder="Enter date of joining">
+                                        </div>
+                                    </div>
+                                    <!---->
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                        <label for="applicationStatus"
+                                        class="form-label">Application Status 
+                                        </label>
+                                        <select class="form-select" id="applicationStatus">
+                                            <option selected>--Select Status--</option>
+                                            <option value="payrollAdvance">Payroll Advance</option>
+                                            <option value="EmergencyLoan/ShorttermLoan">Emergency Loan / Short Term Loan</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="requiredDate" class="form-label">Required Date</label>
+                                        <input type="number" class="form-control" id="requiredDate"
+                                            placeholder="Enter date of joining">
+                                    </div>
+                                    </div>
+
+
+                                    <!-- forth row with textarea -->
+                                    <div class="row g-3">
+                                        <div class="col-md-12">
+                                            <label for="reason" class="form-label">Reason</label>
+                                            <textarea class="form-control" id="reason" rows="3"
+                                                placeholder="Enter reason"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <!-- Submit button -->
+                                    <button type="submit" class="btn btn-light mt-3">Submit</button>
+                                </form>
+                            </div>
+
+
+                            <!-- Placeholder for other forms -->
+                            <div class="card p-4 d-none" id="form-myapp">
+                                <h5>My Applications</h5>
+                                <table class="table application-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Application Type</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                            <th>HOD</th>
+                                            <th>HR</th>
+                                            <th>F&A</th>
+                                            <th>CEO</th>
+                                            <th>-</th>
+                                            <th>-</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Hassan Hayat</td>
+                                            <td>----</td>
+                                            <td>--</td>
+                                            <td>--</td>
+                                            <td>--</td>
+                                            <td>--</td>
+                                            <td>--</td>
+                                            <td>--</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card p-4 d-none" id="form-empapp">
+                                <h5>Employees Applications</h5>
+                                <table class="table employee-application-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Application Type</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                            <th>HOD</th>
+                                            <th>HR</th>
+                                            <th>F&A</th>
+                                            <th>CEO</th>
+                                            <th>-</th>
+                                            <th>-</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Hassan Hayat</td>
+                                            <td>----</td>
+                                            <td>--</td>
+                                            <td>--</td>
+                                            <td>--</td>
+                                            <td>--</td>
+                                            <td>--</td>
+                                            <td>--</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card p-4 d-none" id="form-ref">
+                                <h5>References</h5>
+                                <table class="table Reference-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Application-id</th>
+                                            <th>Name</th>
+                                            <th>Application Type</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                            <th>HOD</th>
+                                            <th>HR</th>
+                                            <th>F&A</th>
+                                            <th>CEO</th>
+                                            <th>-</th>
+                                            <th>-</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>----</td>
+                                            <td>Hassan Hayat</td>
+                                            <td>----</td>
+                                            <td>--</td>
+                                            <td>--</td>
+                                            <td>--</td>
+                                            <td>--</td>
+                                            <td>--</td>
+                                            <td>--</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card p-4 d-none" id="form-payroll">
+                                <h5>Payroll Advance</h5>
+                                <!-- First row with two divs -->
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="totalRecords" class="form-label">Total Records</label>
+                                        <input type="text" class="form-control" id="totalRecords"
+                                            placeholder="0">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="totalAmount" class="form-label">Total Amount</label>
+                                        <input type="text" class="form-control" id="totalAmount"
+                                            placeholder="0">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card p-4 d-none" id="form-emergency">
+                                <h5>Emergency Loan </h5>
+                                 <!-- First row with two divs -->
+                                 <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="totalRecords" class="form-label">Total Records</label>
+                                        <input type="text" class="form-control" id="totalRecords"
+                                            placeholder="0">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="totalAmount" class="form-label">Total Amount</label>
+                                        <input type="text" class="form-control" id="totalAmount"
+                                            placeholder="0">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card p-4 d-none" id="form-quality">
+                                <h5>Quality of Life </h5>
+                                 <!-- First row with two divs -->
+                                 <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="totalRecords" class="form-label">Total Records</label>
+                                        <input type="text" class="form-control" id="totalRecords"
+                                            placeholder="0">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="totalAmount" class="form-label">Total Amount</label>
+                                        <input type="text" class="form-control" id="totalAmount"
+                                            placeholder="0">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card p-4 d-none" id="form-summary">
+                                <h5>Quick Summary </h5>
+                                <table class="table application-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Application Type</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                            <th>HOD</th>
+                                            <th>HR</th>
+                                            <th>F&A</th>
+                                            <th>CEO</th>
+                                            <th>-</th>
+                                            <th>-</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Hassan Hayat</td>
+                                            <td>----</td>
+                                            <td>--</td>
+                                            <td>--</td>
+                                            <td>--</td>
+                                            <td>--</td>
+                                            <td>--</td>
+                                            <td>--</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card p-4 d-none" id="form-eligibility">
+                                <h5>Eligibility Criteria</h5>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="footer">2018 READ FOUNDATION. ALL RIGHTS RESERVED</div>
+
+        </div>
+    </div>
+
+    <!-- Mobile Sidebar -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileSidebar">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="sidebar">
+                <a href="index.html">
+                    <div class="sidebar-item active"><i class="fas fa-home me-2"></i> HOME</div>
+                </a>
+                <a href="leave.html">
+                    <div class="sidebar-item"><i class="fas fa-calendar-alt me-2"></i> LEAVE</div>
+                </a>
+                <div class="sidebar-item"><i class="fas fa-clipboard-list me-2"></i> REQUISITION</div>
+                <div class="sidebar-item"><i class="fas fa-money-bill-wave me-2"></i> BUDGET</div>
+                <div class="sidebar-item"><i class="fas fa-bus me-2"></i> TMS</div>
+                <div class="sidebar-item"><i class="fas fa-users me-2"></i> MEETING</div>
+                <div class="sidebar-item"><i class="fas fa-laptop me-2"></i> IT (SR)</div>
+                <div class="sidebar-item"><i class="fas fa-building me-2"></i> DMM RMD</div>
+                <div class="sidebar-item"><i class="fas fa-home me-2"></i> DMM HD</div>
+                <div class="sidebar-item"><i class="fas fa-chart-line me-2"></i> M_IVA</div>
+                <div class="sidebar-item"><i class="fas fa-file-alt me-2"></i> REPORTS</div>
+                <div class="sidebar-item"><i class="fas fa-tachometer-alt me-2"></i> DASHBOARD</div>
+                <div class="sidebar-item"><i class="fas fa-cog me-2"></i> CONTROL PANEL</div>
+                <div class="sidebar-item"><i class="fas fa-project-diagram me-2"></i> PROJECT MANAGEMENT</div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        document.querySelectorAll('.loan-card').forEach(card => {
+            card.addEventListener('click', () => {
+                // Hide all forms first
+                document.querySelectorAll('#loanForms > div').forEach(form => {
+                    form.classList.add('d-none');
+                });
+                // Show the selected form
+                const targetForm = card.getAttribute('data-form');
+                document.getElementById(targetForm).classList.remove('d-none');
+            });
+        });
+
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

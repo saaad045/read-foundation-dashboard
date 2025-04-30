@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Read Foundation|Sign Up</title>
+  <link rel="stylesheet" href="./css/signup.css" />
+  <meta name="description" content="Sign up page for visually impaired users with a modern and accessible design.">
+</head>
+<body>
+  <div class="signup-container">
+    <div class="signup-box">
+      <h2 id="signup-form" class="sr-only">Sign Up Form</h2>
+      <h1>Create Your Account</h1>
+      <form action="signup.php" method="POST">
+        <div class="input-group">
+          <label for="fullname">Full Name</label>
+          <input type="text" id="fullname" name="fullname" required aria-required="true">
+        </div>
+        <div class="input-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required aria-required="true">
+        </div>
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required aria-required="true">
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required aria-required="true">
+        </div>
+        <div class="input-group">
+          <label for="confirm-password">Confirm Password</label>
+          <input type="password" id="confirm-password" name="confirm_password" required aria-required="true">
+        </div>
+        <button type="submit" class="signup-btn" aria-label="Sign up">Sign Up</button>
+        <div class="login-link">
+          <p>Already have an account? <a href="login.html" aria-label="Log in page">Log In</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="./js/script.js"></script>
+  <script>
+    // Toggle Hamburger Menu
+    function toggleMenu() {
+      const nav = document.querySelector('.nav-links');
+      nav.classList.toggle('active');
+    }
+
+    // Read Aloud Feature
+    let isSpeaking = false;
+    let utterance = null;
+
+    document.getElementById("speaker-icon").addEventListener("click", function () {
+      const bodyText = document.body.innerText;
+
+      if (isSpeaking) {
+        window.speechSynthesis.cancel();
+        isSpeaking = false;
+        this.innerHTML = '🔊';
+      } else {
+        utterance = new SpeechSynthesisUtterance(bodyText);
+        utterance.voice = speechSynthesis.getVoices().find(voice => voice.name.includes("Google") || voice.default);
+        utterance.rate = 1;
+        utterance.pitch = 1;
+        window.speechSynthesis.speak(utterance);
+        isSpeaking = true;
+        this.innerHTML = '❌';
+
+        utterance.onend = () => {
+          isSpeaking = false;
+          document.getElementById("speaker-icon").innerHTML = '🔊';
+        };
+      }
+    });
+  </script>
+
+</body>
+</html>

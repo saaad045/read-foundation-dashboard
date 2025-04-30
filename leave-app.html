@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leave Management</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body style="background-color: #f8f9fa;">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <nav class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse" style="min-height: 100vh;">
+        <div class="position-sticky pt-3">
+          <div class="text-center text-white mb-4">
+            <h4>LEAVE MANAGEMENT</h4>
+          </div>
+          <ul class="nav flex-column">
+            <li class="nav-item menu-item text-white p-2">
+              <a href="index.html" class="text-white text-decoration-none"><i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="nav-item menu-item text-white p-2 bg-secondary">
+              <a href="leave.html" class="text-white text-decoration-none"><i class="fas fa-calendar-alt"></i> Leave</a>
+            </li>
+            <li class="nav-item menu-item text-white p-2">
+              <a href="todo.html" class="text-white text-decoration-none"><i class="fas fa-tasks"></i> TODO List</a>
+            </li>
+            <li class="nav-item menu-item text-white p-2">
+              <a href="application.html" class="text-white text-decoration-none"><i class="fas fa-file-alt"></i>
+                Application</a>
+            </li>
+            <li class="nav-item menu-item text-white p-2">
+              <a href="official-day.html" class="text-white text-decoration-none"><i class="fas fa-calendar-day"></i>
+                Official Day</a>
+            </li>
+            <li class="nav-item menu-item text-white p-2">
+              <a href="my-leaves.html" class="text-white text-decoration-none"><i class="fas fa-user-clock"></i> My
+                Leaves</a>
+            </li>
+            <li class="nav-item menu-item text-white p-2">
+              <a href="field-visit.html" class="text-white text-decoration-none"><i class="fas fa-map-marked-alt"></i>
+                Field Visit</a>
+            </li>
+            <li class="nav-item menu-item text-white p-2">
+              <a href="attendance.html" class="text-white text-decoration-none"><i class="fas fa-clock"></i>
+                Attendance</a>
+            </li>
+            <li class="nav-item menu-item text-white p-2">
+              <a href="data-spec.html" class="text-white text-decoration-none"><i class="fas fa-database"></i> Data
+                Spec</a>
+            </li>
+            <li class="nav-item menu-item text-white p-2">
+              <a href="dashboard.html" class="text-white text-decoration-none"><i class="fas fa-calendar-check"></i>
+                Dateboard</a>
+            </li>
+            <li class="nav-item menu-item text-white p-2">
+              <a href="view.html" class="text-white text-decoration-none"><i class="fas fa-eye"></i> View</a>
+            </li>
+            <li class="nav-item menu-item text-white p-2">
+              <a href="amendments.html" class="text-white text-decoration-none"><i class="fas fa-edit"></i>
+                Amendments</a>
+            </li>
+
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="mt-3">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Leave</li>
+            <li class="breadcrumb-item active" aria-current="page">Leave application</li>
+          </ol>
+        </nav>
+
+
+
+        <!-- Leave Application Form -->
+        <div class="card mb-5">
+          <div class="card-header bg-primary text-white">
+            Leave Application Form
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="mb-3">
+                <label class="form-label">Is this a:</label><br />
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="day_type" value="half" />
+                  <label class="form-check-label">Half Day</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="day_type" value="full" />
+                  <label class="form-check-label">Full Day</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="day_type" value="second_half" />
+                  <label class="form-check-label">Second Half</label>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Leave Type</label>
+                <select class="form-select">
+                  <option>Casual</option>
+                  <option>Annual</option>
+                  <option>Off Days</option>
+                  <option>Medical</option>
+                  <option>Matrimonial</option>
+                  <option>Field Visit / Official Duty</option>
+                  <option>Umrah</option>
+                  <option>Hajj</option>
+                  <option>Paternal</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Application Date</label>
+                <input type="date" class="form-control" />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Number of Days</label>
+                <input type="number" class="form-control" />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Start Time</label>
+                <input type="time" class="form-control" />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">End Time</label>
+                <input type="time" class="form-control" />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Leave Required From</label>
+                <input type="date" class="form-control" />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">To</label>
+                <input type="date" class="form-control" />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Reason</label>
+                <textarea class="form-control" rows="3"></textarea>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Upload Application</label>
+                <input type="file" class="form-control" />
+              </div>
+
+              <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success">Apply for Leave</button>
+                <button type="reset" class="btn btn-danger">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer text-center mt-auto py-3">
+          <p>© 2018 READ FOUNDATION. ALL RIGHTS RESERVED</p>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
